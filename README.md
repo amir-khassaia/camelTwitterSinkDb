@@ -7,8 +7,7 @@ The integration is showing a twitter search that transforms results into JSON an
 routes them to CouchDB instance.  
 
 Requires an instance of CouchDB and creation of Twitter application via:  
-https://dev.twitter.com/apps/ then obtaining the security credentials for API access and using them  
-here.  
+https://dev.twitter.com/apps/ then obtaining the security credentials for API access and using them here.  
 
 Set Twitter and CouchDB configuration in applications.properties, eg:  
 search.type=polling  
