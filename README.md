@@ -52,3 +52,14 @@ eg. running it with keywords "game of thrones"
 [) thread #0 - twitter://search] MyRouteBuilder                 INFO  ***************************************  
 [) thread #0 - twitter://search] CouchDbClientBase              INFO  >> PUT /twitter/fbe979b09f4b42b5863bad9141f4d095 HTTP/1.1  
 [) thread #0 - twitter://search] CouchDbClientBase              INFO  << Status: 201  
+
+
+====================   
+Example CouchDB JSON doc:
+{  
+   "_id": "ff5f6613982041558a62ff963d74fc01",  
+   "_rev": "1-fe19ab06ad8b1869a43cb9ab6c9857de",  
+   "user": "Lawrence Fontana",  
+   "timestamp": "Thu May 30 09:41:06 EST 2013",  
+   "text": "RT @TomChivers: This might be the best thing ever: cat sings the Game of Thrones theme tune http://t.co/nK6p7cX8i7 via @BuzzFeedUK"  
+}  
