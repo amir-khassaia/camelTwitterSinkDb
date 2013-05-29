@@ -55,7 +55,7 @@ eg. running it with keywords "game of thrones"
 
 
 ====================   
-Example CouchDB JSON doc:
+Example CouchDB JSON doc:  
 {  
    "_id": "ff5f6613982041558a62ff963d74fc01",  
    "_rev": "1-fe19ab06ad8b1869a43cb9ab6c9857de",  
