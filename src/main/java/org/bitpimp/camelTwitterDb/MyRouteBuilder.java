@@ -14,6 +14,31 @@ import com.google.gson.JsonObject;
  */
 public class MyRouteBuilder extends RouteBuilder {
 
+	private Processor routeProcessor = new Processor() {
+		@Override
+		public void process(final Exchange exchange) throws Exception {
+			final Status status = (Status) exchange.getIn().getBody();
+			// CouchDB needs Gson object or String as a document base
+			final JsonObject jsonStatus = stautsToJson(status);
+			// push new message body
+			exchange.getIn().setBody(jsonStatus);
+			
+			log.info("***************************************");
+			log.info("User: " + status.getUser().getName());
+			log.info("Date: " + status.getCreatedAt());
+			log.info("Text: " + status.getText());
+			log.info("***************************************");
+		}
+	};
+
+	public Processor getRouteProcessor() {
+		return routeProcessor;
+	}
+
+	public void setRouteProcessor(Processor routeProcessor) {
+		this.routeProcessor = routeProcessor;
+	}
+
 	/**
      * Let's configure the Camel routing rules using Java code...
      */
@@ -26,7 +51,6 @@ public class MyRouteBuilder extends RouteBuilder {
     	getContext().addComponent("properties", pc);
     	
     			
-    	// Setup route from Twitter endpoint using configured properties
     	from("twitter://search?type={{search.type}}" +
     			"&keywords={{search.keywords}}" +
     			"&delay={{search.delay}}" +
@@ -36,26 +60,16 @@ public class MyRouteBuilder extends RouteBuilder {
     			"&accessTokenSecret={{accessTokenSecret}}")
         		.tracing()
         		// Processor to convert Twitter4j status to Gson payload for CouchDB
-        		.process(new Processor() {
-					@Override
-					public void process(final Exchange exchange) throws Exception {
-						final Status status = (Status) exchange.getIn().getBody();
-						// CouchDB needs Gson object or String as a document base
-						final JsonObject jsonStatus = new JsonObject();
-						jsonStatus.addProperty("user", status.getUser().getName());
-						jsonStatus.addProperty("timestamp", status.getCreatedAt().toString());
-						jsonStatus.addProperty("text", status.getText());
-						// push new message body
-						exchange.getIn().setBody(jsonStatus);
-						
-						log.info("***************************************");
-						log.info("User: " + status.getUser().getName());
-						log.info("Date: " + status.getCreatedAt());
-						log.info("Text: " + status.getText());
-						log.info("***************************************");
-					}
-        		})
+        		.process(routeProcessor)
         		// Send to CouchDB endpoint
         		.to("{{url}}");
     }
+
+	JsonObject stautsToJson(final Status status) {
+		final JsonObject jsonStatus = new JsonObject();
+		jsonStatus.addProperty("user", status.getUser().getName());
+		jsonStatus.addProperty("timestamp", status.getCreatedAt().toString());
+		jsonStatus.addProperty("text", status.getText());
+		return jsonStatus;
+	}
 }
