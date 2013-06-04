@@ -43,7 +43,6 @@ eg. running it with keywords "game of thrones"
 [) thread #0 - twitter://search] MyRouteBuilder                 INFO  ***************************************
 [) thread #0 - twitter://search] CouchDbClientBase              INFO  >> PUT /twitter/e218f81f34a24ae29c5f89d396435cdf HTTP/1.1
 [) thread #0 - twitter://search] CouchDbClientBase              INFO  << Status: 201
-[) thread #0 - twitter://search] Tracer                         INFO  ID-KRAKEN-55618-1369869963689-0-10 >>> (route1) from(twitter://search?accessToken=224931664-MvufOcmUhIVtyzstp0CdXt9ETDLt1sWQbMIqZ51b&accessTokenSecret=Npiel4Zg1PuQBbN6OeRyPf3Rn8lqnRQmSDGBIWwxY&consumerKey=ORnwlB9gu71BG7wGEVvDA&consumerSecret=lF5vM1OCRBdcjwiNDCiU4RdVi0hLa64xJoknsE8M&delay=60&keywords=game+of+thrones&type=polling) --> org.bitpimp.camelTwitterDb.MyRouteBuilder$1@30c06258 <<< Pattern:InOnly, Headers:{breadcrumbId=ID-KRAKEN-55618-1369869963689-0-9}, BodyType:twitter4j.internal.json.StatusJSONImpl, Body:Thu May 30 09:25:26 EST 2013 (DeweyCarter) "8 Business Lessons From Game of Thrones" good read http://t.co/KjrlXNIBnp
 [) thread #0 - twitter://search] MyRouteBuilder                 INFO  ***************************************
 [) thread #0 - twitter://search] MyRouteBuilder                 INFO  User: Dewey Carter
 [) thread #0 - twitter://search] MyRouteBuilder                 INFO  Date: Thu May 30 09:25:26 EST 2013
