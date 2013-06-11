@@ -15,7 +15,7 @@ import twitter4j.json.DataObjectFactory;
 
 public class CamelTwitterDbTest extends CamelTestSupport{
 	@Produce(uri = "direct:start")
-    protected ProducerTemplate template;
+	protected ProducerTemplate template;
 
 	@EndpointInject(uri = "mock:to")
 	protected MockEndpoint toEndpoint;
