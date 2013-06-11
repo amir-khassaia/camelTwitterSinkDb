@@ -10,6 +10,7 @@ Requires an instance of CouchDB and creation of Twitter application via:
 https://dev.twitter.com/apps/ then obtaining the security credentials for API access and using them here.  
 
 Set Twitter and CouchDB configuration in applications.properties, eg:  
+```  
 search.type=polling  
 search.delay=60  
 search.keywords=camel  
@@ -18,10 +19,12 @@ consumerSecret=<obtain from https://dev.twitter.com/apps/>
 accessToken=<obtain from https://dev.twitter.com/apps/>  
 accessTokenSecret=<obtain from https://dev.twitter.com/apps/>  
 url=couchdb:http://localhost/YourDB  
+``` 
   
   
 =============================  
 eg. running it with keywords "game of thrones"  
+```
 [                          main] MainSupport                    INFO  Apache Camel 2.11.0 starting  
 [                          main] DefaultCamelContext            INFO  Apache Camel 2.11.0 (CamelContext: camel-1) is starting  
 [                          main] ManagementStrategyFactory      INFO  JMX enabled.  
@@ -52,10 +55,12 @@ eg. running it with keywords "game of thrones"
 [) thread #0 - twitter://search] MyRouteBuilder                 INFO  ***************************************  
 [) thread #0 - twitter://search] CouchDbClientBase              INFO  >> PUT /twitter/fbe979b09f4b42b5863bad9141f4d095 HTTP/1.1  
 [) thread #0 - twitter://search] CouchDbClientBase              INFO  << Status: 201  
+```
 
 
 ====================   
 Example CouchDB JSON doc:  
+```
 {  
    "_id": "ff5f6613982041558a62ff963d74fc01",  
    "_rev": "1-fe19ab06ad8b1869a43cb9ab6c9857de",  
@@ -63,3 +68,4 @@ Example CouchDB JSON doc:
    "timestamp": "Thu May 30 09:41:06 EST 2013",  
    "text": "RT @TomChivers: This might be the best thing ever: cat sings the Game of Thrones theme tune http://t.co/nK6p7cX8i7 via @BuzzFeedUK"  
 }  
+```
